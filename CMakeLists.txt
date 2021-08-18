@@ -6,7 +6,16 @@
 # Email: wweeii.du@gmail.com
 ########################################################################
 
-project(Doubts VERSION 1.0 LANGUAGES CXX) 
+project(Doubts) 
 cmake_minimum_required(VERSION 3.14)
 
-# set(CMAKE_MODULE_PATH /)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_MODULE_PATH 
+        ${CMAKE_MODULE_PATH}
+        /usr/local/share/cmake/Modules
+    )
+set(CMAKE_PREFIX_PATH
+        ${CMAKE_PREFIX_PATH}
+        /usr/local/lib
+        /usr/local/
+    )
