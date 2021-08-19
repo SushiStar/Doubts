@@ -26,9 +26,10 @@ set(CMAKE_PREFIX_PATH
         /opt/dex/
         /opt/dex/lib/
     )
-set(CMAKE_BINARY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/build)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
 
+set(CMAKE_BINARY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/build/)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
 
 
 # find_package(Eigen3 REQUIRED)
@@ -42,4 +43,6 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/)
     # )
 
 add_executable(stl_transform src/stl_transform.cpp)
-target_link_libraries(stl_transform Eigen3::Eigen)
+
+add_executable(eigen_test src/eigen.cpp)
+target_link_libraries(eigen_test Eigen3::Eigen)
