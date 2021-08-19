@@ -10,6 +10,7 @@ project(Doubts)
 cmake_minimum_required(VERSION 3.14)
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CXX_FLAGS_DBG "-ggdb -O0 -pg -DDEBUG")
 
 set(CMAKE_MODULE_PATH 
@@ -26,7 +27,8 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
 
 
 
-find_package(Eigen3 REQUIRED)
+# find_package(Eigen3 REQUIRED)
+find_package(Eigen3 3.3 REQUIRED NO_MODULE)
 
 
 ########################################################################
@@ -36,3 +38,4 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/)
     # )
 
 add_executable(stl_transform src/stl_transform.cpp)
+target_link_libraries(stl_transform Eigen3::Eigen)
