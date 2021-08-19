@@ -16,11 +16,15 @@ set(CMAKE_CXX_FLAGS_DBG "-ggdb -O0 -pg -DDEBUG")
 set(CMAKE_MODULE_PATH 
         ${CMAKE_MODULE_PATH}
         /usr/local/share/cmake/Modules
+        /usr/local/lib/cmake/Modules
+        /opt/dex/lib/cmake/Modules
     )
 set(CMAKE_PREFIX_PATH
         ${CMAKE_PREFIX_PATH}
-        /usr/local/lib
+        /usr/local/lib/
         /usr/local/
+        /opt/dex/
+        /opt/dex/lib/
     )
 set(CMAKE_BINARY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/build)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
