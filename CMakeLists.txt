@@ -44,6 +44,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/)
 
 add_executable(stl_transform src/stl_transform.cpp)
 add_executable(string_test src/string.cpp)
+add_executable(stl_math src/stl_math.cpp)
 
 add_executable(eigen_test src/eigen.cpp)
 target_link_libraries(eigen_test Eigen3::Eigen)
