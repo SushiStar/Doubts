@@ -45,6 +45,7 @@
  * }
  */
 
+/*
 int main() {
   Eigen::Vector2d tran{0.2, 0.3};
   Eigen::Rotation2Dd ori(0.785398);
@@ -57,5 +58,19 @@ int main() {
   Eigen::Vector2d origin{0.1, 0.0};
   Eigen::Vector2d newpt = pose * origin;
   std::cout << newpt << std::endl;
+  return 0;
+}
+*/
+
+int main() {
+  Eigen::Vector3d vct1;
+  Eigen::VectorXd vct2;
+  if (vct1.isApprox(vct2)) {
+    printf("they are the same\n");
+  } else {
+    printf("they are not the same\n");
+  }
+  std::cout << vct1 << std::endl;
+
   return 0;
 }
