@@ -48,3 +48,6 @@ add_executable(stl_math src/stl_math.cpp)
 
 add_executable(eigen_test src/eigen.cpp)
 target_link_libraries(eigen_test Eigen3::Eigen)
+
+add_executable(eigen_spline src/eigen_spline.cpp)
+target_link_libraries(eigen_spline Eigen3::Eigen)
