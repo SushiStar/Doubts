@@ -33,6 +33,9 @@ const Eigen::MatrixXd GetWayPoints() {
       0.4015, 0.4141, 2.7372,         //
       0.5512, 0.4302, 2.7407,         //
       0.6452, 0.4433, 2.6487;
+
+  std::cout << points << std::endl;
+
   points.transposeInPlace();
   return points;
 }
@@ -40,10 +43,7 @@ const Eigen::MatrixXd GetWayPoints() {
 std::vector<Eigen::Vector3d> splineFromWayPoints(const Eigen::MatrixXd &points);
 
 int main() {
-  const Eigen::DenseIndex degree{3};
-  const auto pts_raw = GetWayPoints();
-  std::cout << pts_raw << std::endl;
-  auto pts_spln = splineFromWayPoints(pts_raw);
+  auto pts_spln = splineFromWayPoints(GetWayPoints());
   return 0;
 }
 
