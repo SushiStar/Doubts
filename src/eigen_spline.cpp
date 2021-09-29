@@ -26,28 +26,45 @@
  * @return const Eigen::MatrixXd
  */
 const Eigen::MatrixXd GetWayPoints() {
-  Eigen::MatrixXd points(3, 6);
-  points << -0.0048, 0.3527, 1.7433, 0.3484, 0.4033, 2.6894, 0.3617, 0.4069,
-      2.7053, 0.4015, 0.4141, 2.7372, 0.5512, 0.4302, 2.7407, 0.6452, 0.4433,
-      2.6487;
+  Eigen::MatrixXd points(6, 3);
+  points << -0.0048, 0.3527, 1.7433,  //
+      0.3484, 0.4033, 2.6894,         //
+      0.3617, 0.4069, 2.7053,         //
+      0.4015, 0.4141, 2.7372,         //
+      0.5512, 0.4302, 2.7407,         //
+      0.6452, 0.4433, 2.6487;
+  points.transposeInPlace();
   return points;
 }
 
+std::vector<Eigen::Vector3d> splineFromWayPoints(const Eigen::MatrixXd &points);
+
 int main() {
   const Eigen::DenseIndex degree{3};
-  const auto pts = GetWayPoints();
-  Eigen::Spline3d::KnotVectorType chord_lengths;  // knot parameters
-  Eigen::ChordLengths(pts, chord_lengths);
-
-  Eigen::Spline3d spl = Eigen::SplineFitting<Eigen::Spline3d>::Interpolate(
-      pts, degree, chord_lengths);
-
-  for (Eigen::DenseIndex i = 0; i < pts.cols(); ++i) {
-    Eigen::Spline3d::PointType pt = spl(chord_lengths(i));
-    Eigen::Spline3d::PointType ref = pts.col(i);
-    printf("%.3f %.3f %.3f <-> %.3f %.3f %.3f\n", pt(0), pt(1), pt(2), ref(0),
-           ref(1), ref(2));
-  }
-
+  const auto pts_raw = GetWayPoints();
+  std::cout << pts_raw << std::endl;
+  auto pts_spln = splineFromWayPoints(pts_raw);
   return 0;
+}
+
+std::vector<Eigen::Vector3d> splineFromWayPoints(
+    const Eigen::MatrixXd &points) {
+  assert(points.rows() == 3);
+  const double step{0.01};
+  const unsigned int degree{4};  /// degree of the spline
+
+  // normlaized knot parameters
+  Eigen::Spline3d::KnotVectorType chord_lengths;
+  Eigen::ChordLengths(points, chord_lengths);
+
+  Eigen::Spline3d spln = Eigen::SplineFitting<Eigen::Spline3d>::Interpolate(
+      points, 4, chord_lengths);
+
+  std::vector<Eigen::Vector3d> ret{};
+  for (double i = 0; i < 1.0; i += step) {
+    Eigen::MatrixXd deriv = spln.derivatives(i, 2);
+    auto pt{deriv.col(0)};
+    printf("%.5f %.5f %.5f\n", pt(0), pt(1), pt(2));
+  }
+  return ret;
 }
