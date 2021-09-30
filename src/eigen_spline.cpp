@@ -34,7 +34,7 @@ const Eigen::MatrixXd GetWayPoints() {
       0.5512, 0.4302, 2.7407,         //
       0.6452, 0.4433, 2.6487;
 
-  std::cout << points << std::endl;
+  std::cout << points << "\n\n";
 
   points.transposeInPlace();
   return points;
@@ -51,14 +51,14 @@ std::vector<Eigen::Vector3d> splineFromWayPoints(
     const Eigen::MatrixXd &points) {
   assert(points.rows() == 3);
   const double step{0.01};
-  const unsigned int degree{4};  /// degree of the spline
+  const unsigned int degree{2};  /// degree of the spline
 
   // normlaized knot parameters
   Eigen::Spline3d::KnotVectorType chord_lengths;
   Eigen::ChordLengths(points, chord_lengths);
 
   Eigen::Spline3d spln = Eigen::SplineFitting<Eigen::Spline3d>::Interpolate(
-      points, 4, chord_lengths);
+      points, degree, chord_lengths);
 
   std::vector<Eigen::Vector3d> ret{};
   for (double i = 0; i < 1.0; i += step) {
