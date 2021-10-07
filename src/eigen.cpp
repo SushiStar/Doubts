@@ -77,10 +77,21 @@ int main() {
 }
 */
 
+/*
+ * int main() {
+ *   Eigen::MatrixXd mt;
+ *   mt.resize(1000, 1000);
+ *   mt.fill(-1);
+ *   std::cout << mt;
+ *   return 0;
+ * }
+ */
+
 int main() {
-  Eigen::MatrixXd mt;
-  mt.resize(1000, 1000);
-  mt.fill(-1);
-  std::cout << mt;
+  Eigen::MatrixXd mt(3, 3);
+  mt << 0, 1, 2, 3, 4, 5, 6, 7, 8;
+  std::cout << mt << std::endl;
+  mt.resize(2, 2);
+  std::cout << '\n' << mt << std::endl;
   return 0;
 }
