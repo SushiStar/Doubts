@@ -62,6 +62,7 @@ int main() {
 }
 */
 
+/*
 int main() {
   Eigen::Vector3d vct1;
   Eigen::VectorXd vct2;
@@ -72,5 +73,14 @@ int main() {
   }
   std::cout << vct1 << std::endl;
 
+  return 0;
+}
+*/
+
+int main() {
+  Eigen::MatrixXd mt;
+  mt.resize(10, 10);
+  mt.fill(-1);
+  std::cout << mt;
   return 0;
 }
