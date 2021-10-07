@@ -79,7 +79,7 @@ int main() {
 
 int main() {
   Eigen::MatrixXd mt;
-  mt.resize(10, 10);
+  mt.resize(1000, 1000);
   mt.fill(-1);
   std::cout << mt;
   return 0;
