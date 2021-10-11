@@ -34,6 +34,7 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
 
 # find_package(Eigen3 REQUIRED)
 find_package(Eigen3 3.3 REQUIRED NO_MODULE)
+find_package(Threads)
 
 
 ########################################################################
@@ -52,3 +53,6 @@ target_link_libraries(eigen_test Eigen3::Eigen)
 
 add_executable(eigen_spline src/eigen_spline.cpp)
 target_link_libraries(eigen_spline Eigen3::Eigen)
+
+add_executable(stl_thread src/stl_thread.cpp)
+target_link_libraries(stl_thread pthread)
