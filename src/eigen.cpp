@@ -88,8 +88,11 @@ int main() {
  */
 
 int main() {
-  Eigen::VectorXd v(5);
-  v << 1, 2, 3, 4, 5;
-  printf("The sum is: %.3f\n", v.sum());
+  Eigen::MatrixXd mat(5, 4);
+  mat << 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20;
+
+  mat.conservativeResize(mat.rows(), 3);
+  std::cout << mat << std::endl;
+
   return 0;
 }
