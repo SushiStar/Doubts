@@ -16,10 +16,12 @@
  */
 
 int main() {
-  int32_t a = 17;
-  int32_t b = ~a;
+  uint32_t a = 17;
+  uint32_t b = ~a;
   std::bitset<32> st1(a), st2(b);
 
+  std::cout << a << std::endl;
+  std::cout << b << std::endl;
   std::cout << st1 << std::endl;
   std::cout << st2 << std::endl;
 }
