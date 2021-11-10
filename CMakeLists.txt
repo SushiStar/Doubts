@@ -47,6 +47,7 @@ add_executable(stl_transform src/stl_transform.cpp)
 add_executable(string_test src/string.cpp)
 add_executable(stl_math src/stl_math.cpp)
 add_executable(bit_operation src/bitoperation.cpp)
+add_executable(stl_general src/stl_general.cpp)
 
 add_executable(eigen_test src/eigen.cpp)
 target_link_libraries(eigen_test Eigen3::Eigen)
@@ -56,3 +57,4 @@ target_link_libraries(eigen_spline Eigen3::Eigen)
 
 add_executable(stl_thread src/stl_thread.cpp)
 target_link_libraries(stl_thread pthread)
+
