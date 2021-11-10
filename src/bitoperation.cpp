@@ -1,6 +1,7 @@
 /**
  */
 
+#include <bitset>
 #include <iostream>
 #include <vector>
 
@@ -15,8 +16,10 @@
  */
 
 int main() {
-  int a = 11;
-  int b = a + 1;
-  int c = a ^ b;
-  std::cout << c << std::endl;
+  int32_t a = 17;
+  int32_t b = ~a;
+  std::bitset<32> st1(a), st2(b);
+
+  std::cout << st1 << std::endl;
+  std::cout << st2 << std::endl;
 }
