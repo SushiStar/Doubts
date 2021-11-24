@@ -87,21 +87,22 @@ int main() {
  * }
  */
 
+int main() {
+  Eigen::MatrixXd mat(5, 4);
+  mat << 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20;
+
+  std::cout << mat.rows() << std::endl;
+  mat.conservativeResize(mat.rows() - 2, 3);
+  std::cout << mat << std::endl;
+  std::cout << mat.rows() << std::endl;
+
+  return 0;
+}
+
 /*
  * int main() {
- *   Eigen::MatrixXd mat(5, 4);
- *   mat << 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
- * 20;
- *
- *   mat.conservativeResize(mat.rows(), 3);
- *   std::cout << mat << std::endl;
- *
+ *   const Eigen::Vector3d vec{0, 1, 0};
+ *   std::cout << vec << std::endl;
  *   return 0;
  * }
  */
-
-int main() {
-  const Eigen::Vector3d vec{0, 1, 0};
-  std::cout << vec << std::endl;
-  return 0;
-}
