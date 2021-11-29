@@ -87,17 +87,20 @@ int main() {
  * }
  */
 
-int main() {
-  Eigen::MatrixXd mat(5, 4);
-  mat << 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20;
-
-  std::cout << mat.rows() << std::endl;
-  mat.conservativeResize(mat.rows() - 2, 3);
-  std::cout << mat << std::endl;
-  std::cout << mat.rows() << std::endl;
-
-  return 0;
-}
+/*
+ * int main() {
+ *   Eigen::MatrixXd mat(5, 4);
+ *   mat << 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+ * 20;
+ *
+ *   std::cout << mat.rows() << std::endl;
+ *   mat.conservativeResize(mat.rows() - 2, 3);
+ *   std::cout << mat << std::endl;
+ *   std::cout << mat.rows() << std::endl;
+ *
+ *   return 0;
+ * }
+ */
 
 /*
  * int main() {
@@ -106,3 +109,15 @@ int main() {
  *   return 0;
  * }
  */
+
+int main() {
+  Eigen::MatrixXd mt(2, 2);
+  mt << 0, 1, 2, 3;
+
+  Eigen::MatrixXd new_mt = mt;
+  mt(1, 1) = 8;
+  std::cout << mt << std::endl;
+  std::cout << new_mt << std::endl;
+
+  retur 0;
+}
