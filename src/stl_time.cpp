@@ -35,14 +35,11 @@ int main() {
   // const std::string datetime{"1970-01-01T00:00:00.008943-07:00"};
   const std::string datetime1{"2021-07-08T11:00:00.008943-07:00"};
   const std::string datetime2{"2021-05-08T11:00:00.008943-07:00"};
-  auto a = ParseISO8601(datetime1);
-  auto b = ParseISO8601(datetime2);
-  std::cout << a << "\n";
-  std::cout << b << "\n";
-  if (a < b) {
-    std::cout << "a < b\n";
-  } else {
-    std::cout << "a > b\n";
-  }
+  std::time_t a = ParseISO8601(datetime1);
+  std::time_t b = ParseISO8601(datetime2);
+
+  std::cout << a << std::endl;
+  std::cout << a << std::endl;
+
   return 0;
 }
