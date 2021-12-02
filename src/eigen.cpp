@@ -119,5 +119,5 @@ int main() {
   std::cout << mt << std::endl;
   std::cout << new_mt << std::endl;
 
-  retur 0;
+  return 0;
 }

@@ -46,6 +46,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/)
 add_executable(stl_transform src/stl_transform.cpp)
 add_executable(string_test src/string.cpp)
 add_executable(stl_math src/stl_math.cpp)
+add_executable(stl_time src/stl_time.cpp)
 add_executable(bit_operation src/bitoperation.cpp)
 add_executable(stl_general src/stl_general.cpp)
 
@@ -57,4 +58,3 @@ target_link_libraries(eigen_spline Eigen3::Eigen)
 
 add_executable(stl_thread src/stl_thread.cpp)
 target_link_libraries(stl_thread pthread)
-
