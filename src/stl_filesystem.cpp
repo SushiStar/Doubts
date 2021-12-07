@@ -31,15 +31,19 @@ int main() {
   //"message":"pressure_reading",
   //"extra":{"cup":5,"error_delay":0,"pressure":0.0,"state":1}}
   // const char fmt[] = "{\"timestamp\":\"%s\"[, ]\"message\":\"%s\"[, ]%s}";
-  const char fmt[] = "{\"timestamp\":\"%[^\",], \"message\":%[^\",]}";
+  // const char fmt[] = "{\"timestamp\":\"%[^\"]%[^,] \"message\":%[^\",], %s}";
+  const char fmt[] = "{\"%[^\"]\":\"%[^\"]\", \"%[^\"]\":\"%[^\"]\", %s}";
   std::fstream fs(filepath);
   std::string buffer;
-  char stamp[50], message[50], tmp[4096];
+  char timestamp[10], stamp[50], message[50], msg[50], tmp[4096];
+  char comma[10];
   while (std::getline(fs, buffer)) {
-    int k = std::sscanf(buffer.c_str(), fmt, tmp, stamp);
+    int k =
+        std::sscanf(buffer.c_str(), fmt, timestamp, stamp, message, msg, tmp);
     if (k == 0)
       continue;
-    std::cout << stamp << " " << tmp << " " << std::endl;
+    std::cout << timestamp << " " << stamp << " " << message << " " << msg
+              << " " << tmp << std::endl;
     // if () {
     // std::cout << buffer;
     // }
