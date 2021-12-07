@@ -36,7 +36,6 @@ int main() {
   std::fstream fs(filepath);
   std::string buffer;
   char timestamp[10], stamp[50], message[50], msg[50], tmp[4096];
-  char comma[10];
   while (std::getline(fs, buffer)) {
     std::sscanf(buffer.c_str(), fmt, timestamp, stamp, message, msg, tmp);
     std::cout << stamp << " " << msg << " " << tmp << std::endl;
