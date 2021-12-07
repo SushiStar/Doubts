@@ -38,12 +38,8 @@ int main() {
   char timestamp[10], stamp[50], message[50], msg[50], tmp[4096];
   char comma[10];
   while (std::getline(fs, buffer)) {
-    int k =
-        std::sscanf(buffer.c_str(), fmt, timestamp, stamp, message, msg, tmp);
-    if (k == 0)
-      continue;
-    std::cout << timestamp << " " << stamp << " " << message << " " << msg
-              << " " << tmp << std::endl;
+    std::sscanf(buffer.c_str(), fmt, timestamp, stamp, message, msg, tmp);
+    std::cout << stamp << " " << msg << " " << tmp << std::endl;
     // if () {
     // std::cout << buffer;
     // }
