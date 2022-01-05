@@ -30,8 +30,6 @@ int main() {
   //{"timestamp":"2021-11-09T11:10:29.137453-08:00",
   //"message":"pressure_reading",
   //"extra":{"cup":5,"error_delay":0,"pressure":0.0,"state":1}}
-  // const char fmt[] = "{\"timestamp\":\"%s\"[, ]\"message\":\"%s\"[, ]%s}";
-  // const char fmt[] = "{\"timestamp\":\"%[^\"]%[^,] \"message\":%[^\",], %s}";
   const char fmt[] = "{\"%[^\"]\":\"%[^\"]\", \"%[^\"]\":\"%[^\"]\", %s}";
   std::fstream fs(filepath);
   std::string buffer;
@@ -39,19 +37,7 @@ int main() {
   while (std::getline(fs, buffer)) {
     std::sscanf(buffer.c_str(), fmt, timestamp, stamp, message, msg, tmp);
     std::cout << stamp << " " << msg << " " << tmp << std::endl;
-    // if () {
-    // std::cout << buffer;
-    // }
   }
 
   return 0;
 }
-
-// int main() {
-//   std::string s{"12 message34, 56 6"};
-//   constexpr char fmt[] = "%s message%[^','], %s %s";
-//   char one[10], two[20], three[30], four[40];
-//   std::sscanf(s.c_str(), fmt, one, two, three, four);
-//   std::cout << one << " " << two << " " << three << " " << four << '\n';
-//   return 0;
-// }
