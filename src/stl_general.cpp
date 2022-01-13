@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <unordered_map>
+#include <unordered_set>
 #include <vector>
 
 /*
@@ -27,10 +28,25 @@
  */
 
 // conclusion: lambda capture is const by default
+/*
+ * int main() {
+ *   const std::string test{"sldfkj"};
+ *   auto lmd = [&test](int idx) -> std::string {
+ *     return test + "2" + std::to_string(idx);
+ *   };
+ *   std::cout << lmd(3) << std::endl;
+ * }
+ */
+
 int main() {
-  const std::string test{"sldfkj"};
-  auto lmd = [&test](int idx) -> std::string {
-    return test + "2" + std::to_string(idx);
-  };
-  std::cout << lmd(3) << std::endl;
+  std::vector<std::string> vct1{"1", "2", "3", "3"};
+  std::vector<std::string> vct2{"3", "4", "4", "5"};
+  std::unordered_set<std::string> sett;
+  sett.insert(vct1.begin(), vct1.end());
+  sett.insert(vct2.begin(), vct2.end());
+  for (auto num : sett) {
+    std::cout << num << '\n';
+  }
+
+  return 0;
 }
