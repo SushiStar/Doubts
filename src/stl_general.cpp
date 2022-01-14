@@ -1,4 +1,5 @@
 #include <iostream>
+#include <memory>
 #include <string>
 #include <unordered_map>
 #include <unordered_set>
@@ -38,15 +39,26 @@
  * }
  */
 
-int main() {
-  std::vector<std::string> vct1{"1", "2", "3", "3"};
-  std::vector<std::string> vct2{"3", "4", "4", "5"};
-  std::unordered_set<std::string> sett;
-  sett.insert(vct1.begin(), vct1.end());
-  sett.insert(vct2.begin(), vct2.end());
-  for (auto num : sett) {
-    std::cout << num << '\n';
-  }
+/*
+ * int main() {
+ *   std::vector<std::string> vct1{"1", "2", "3", "3"};
+ *   std::vector<std::string> vct2{"3", "4", "4", "5"};
+ *   std::unordered_set<std::string> sett;
+ *   sett.insert(vct1.begin(), vct1.end());
+ *   sett.insert(vct2.begin(), vct2.end());
+ *   for (auto num : sett) {
+ *     std::cout << num << '\n';
+ *   }
+ *
+ *   return 0;
+ * }
+ */
 
-  return 0;
+int main() {
+  std::unique_ptr<int> a = std::make_unique<int>(10);
+  std::cout << *a << std::endl;
+  auto& b = a;
+  std::cout << *b << std::endl;
+  *b = 2;
+  std::cout << *a << std::endl;
 }
