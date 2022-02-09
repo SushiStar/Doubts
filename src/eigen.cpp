@@ -110,14 +110,28 @@ int main() {
  * }
  */
 
+/*
+ * int main() {
+ *   Eigen::MatrixXd mt(2, 2);
+ *   mt << 0, 1, 2, 3;
+ *
+ *   Eigen::MatrixXd new_mt = mt;
+ *   mt(1, 1) = 8;
+ *   std::cout << mt << std::endl;
+ *   std::cout << new_mt << std::endl;
+ *
+ *   return 0;
+ * }
+ */
+
 int main() {
-  Eigen::MatrixXd mt(2, 2);
-  mt << 0, 1, 2, 3;
-
-  Eigen::MatrixXd new_mt = mt;
-  mt(1, 1) = 8;
-  std::cout << mt << std::endl;
-  std::cout << new_mt << std::endl;
-
+  double r{0.15};
+  double p{-1.33};
+  double y{1.2};
+  auto q = Eigen::Quaterniond(Eigen::AngleAxisd(r, Eigen::Vector3d::UnitX()) *
+                              Eigen::AngleAxisd(p, Eigen::Vector3d::UnitY()) *
+                              Eigen::AngleAxisd(y, Eigen::Vector3d::UnitZ()));
+  auto euler = q.toRotationMatrix().eulerAngles(0, 1, 2);
+  std::cout << euler << std::endl;
   return 0;
 }
