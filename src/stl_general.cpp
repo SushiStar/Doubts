@@ -54,11 +54,23 @@
  * }
  */
 
+/*
+ * int main() {
+ *   std::unique_ptr<int> a = std::make_unique<int>(10);
+ *   std::cout << *a << std::endl;
+ *   auto& b = a;
+ *   std::cout << *b << std::endl;
+ *   *b = 2;
+ *   std::cout << *a << std::endl;
+ * }
+ */
+
 int main() {
-  std::unique_ptr<int> a = std::make_unique<int>(10);
-  std::cout << *a << std::endl;
-  auto& b = a;
-  std::cout << *b << std::endl;
-  *b = 2;
-  std::cout << *a << std::endl;
+  std::unordered_set<int> sett;
+  sett.insert(3);
+  sett.insert(4);
+  sett.insert(5);
+  sett.insert(6);
+  sett.erase(7);
+  return 0;
 }
