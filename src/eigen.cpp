@@ -124,13 +124,32 @@ int main() {
  * }
  */
 
+/*
+ * int main() {
+ *   auto q =
+ *       Eigen::Quaterniond(Eigen::AngleAxisd(0.15, Eigen::Vector3d::UnitX()) *
+ *                          Eigen::AngleAxisd(-1.33, Eigen::Vector3d::UnitY()) *
+ *                          Eigen::AngleAxisd(1.57, Eigen::Vector3d::UnitZ()));
+ *   auto euler = q.toRotationMatrix().eulerAngles(0, 1, 2);
+ *   // 0.15 -1.33 1.57
+ *   std::cout << euler << std::endl;
+ *   return 0;
+ * }
+ */
+
 int main() {
-  auto q =
-      Eigen::Quaterniond(Eigen::AngleAxisd(0.15, Eigen::Vector3d::UnitX()) *
-                         Eigen::AngleAxisd(-1.33, Eigen::Vector3d::UnitY()) *
-                         Eigen::AngleAxisd(1.57, Eigen::Vector3d::UnitZ()));
-  auto euler = q.toRotationMatrix().eulerAngles(0, 1, 2);
-  // 0.15 -1.33 1.57
-  std::cout << euler << std::endl;
+  Eigen::Vector3d a = Eigen::Vector3d::Random();
+  // a.setZero();
+  printf("%.2f %.2f %.2f\n", a(0), a(1), a(2));
+  a.setRandom();
+  printf("%.2f %.2f %.2f\n", a(0), a(1), a(2));
+  a.setRandom();
+  printf("%.2f %.2f %.2f\n", a(0), a(1), a(2));
+
+  Eigen::Vector3i b;
+  b.setZero();
+  printf("%d %d %d\n", b(0), b(1), b(2));
+  b.setRandom();
+  printf("%d %d %d\n", b(0), b(1), b(2));
   return 0;
 }
