@@ -1,3 +1,5 @@
+#include <exception>
+#include <functional>
 #include <iostream>
 #include <memory>
 #include <string>
@@ -65,12 +67,48 @@
  * }
  */
 
+/*
+ * int main() {
+ *   std::unordered_set<int> sett;
+ *   sett.insert(3);
+ *   sett.insert(4);
+ *   sett.insert(5);
+ *   sett.insert(6);
+ *   sett.erase(7);
+ *   return 0;
+ * }
+ */
+
+/**
+ * @brief test lambda as a function parameter
+ */
+class test {
+ public:
+  void Add(int a, int b);
+};
+
+void test::Add(int a, int b) {
+  throw std::runtime_error("throwed an error");
+  std::cout << a + b << std::endl;
+}
+
+bool exception_test(std::function<void()> f) {
+  bool exception_flag{false};
+  try {
+    f();
+  } catch (std::runtime_error& e) {
+    exception_flag = true;
+  }
+  return exception_flag;
+}
+
 int main() {
-  std::unordered_set<int> sett;
-  sett.insert(3);
-  sett.insert(4);
-  sett.insert(5);
-  sett.insert(6);
-  sett.erase(7);
+  test t;
+  std::function<void()> f = [&]() { t.Add(10, 20); };
+  if (exception_test(f)) {
+    printf("exception caught!\n");
+  } else {
+    printf("exception not caught!\n");
+  }
   return 0;
 }
