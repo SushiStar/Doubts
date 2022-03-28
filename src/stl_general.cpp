@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <exception>
 #include <functional>
 #include <iostream>
@@ -102,13 +103,23 @@ bool exception_test(std::function<void()> f) {
   return exception_flag;
 }
 
+/*
+ * int main() {
+ *   test t;
+ *   std::function<void()> f = [&]() { t.Add(10, 20); };
+ *   if (exception_test(f)) {
+ *     printf("exception caught!\n");
+ *   } else {
+ *     printf("exception not caught!\n");
+ *   }
+ *   return 0;
+ * }
+ */
+
 int main() {
-  test t;
-  std::function<void()> f = [&]() { t.Add(10, 20); };
-  if (exception_test(f)) {
-    printf("exception caught!\n");
-  } else {
-    printf("exception not caught!\n");
-  }
+  std::vector<int> vct{0, 1, 2, 3};
+  for_each(vct.begin(), vct.end(), [&](int& i) { ++i; });
+  for_each(vct.begin(), vct.end(), [&](int i) { std::cout << i << '\n'; });
+
   return 0;
 }
