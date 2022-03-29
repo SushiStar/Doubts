@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <exception>
 #include <functional>
 #include <iostream>
@@ -96,19 +97,58 @@ bool exception_test(std::function<void()> f) {
   bool exception_flag{false};
   try {
     f();
-  } catch (std::runtime_error& e) {
+  } catch (std::runtime_error &e) {
     exception_flag = true;
   }
   return exception_flag;
 }
 
+/*
+ * int main() {
+ *   test t;
+ *   std::function<void()> f = [&]() { t.Add(10, 20); };
+ *   if (exception_test(f)) {
+ *     printf("exception caught!\n");
+ *   } else {
+ *     printf("exception not caught!\n");
+ *   }
+ *   return 0;
+ * }
+ */
+
+/*
+ * int main() {
+ *   std::vector<int> vct{0, 1, 2, 3};
+ *   for_each(vct.begin(), vct.end(), [&](int& i) { ++i; });
+ *   for_each(vct.begin(), vct.end(), [&](int i) { std::cout << i << '\n'; });
+ *
+ *   return 0;
+ * }
+ */
+
+class A {
+ public:
+  A(int k);
+  bool SameVal(const A &other);
+
+ private:
+  int val;
+};
+
+A::A(int k) : val(k) {
+}
+
+bool A::SameVal(const A &other) {
+  return val == other.val;
+}
+
 int main() {
-  test t;
-  std::function<void()> f = [&]() { t.Add(10, 20); };
-  if (exception_test(f)) {
-    printf("exception caught!\n");
+  A a(10);
+  A b(11);
+  if (a.SameVal(b)) {
+    printf("same value\n");
   } else {
-    printf("exception not caught!\n");
+    printf("different value\n");
   }
   return 0;
 }

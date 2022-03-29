@@ -25,14 +25,14 @@ class A {
 };
 
 /// @brief test string_view
-int main() {
-  std::string st{"0123456789"};
-  std::string_view stv{st.substr(0, 3)};
-  std::cout << stv << std::endl;
-  st[0] = 9;
-  std::cout << stv << std::endl;
-  return 0;
-}
+// int main() {
+//   std::string st{"0123456789"};
+//   std::string_view stv{st.substr(0, 3)};
+//   std::cout << stv << std::endl;
+//   st[0] = 9;
+//   std::cout << stv << std::endl;
+//   return 0;
+// }
 
 /// @brief string_view == string ?
 /// implicit from string to string_view
@@ -47,14 +47,13 @@ int main() {
 //   return 0;
 // }
 
-/// @brief implicit conversion from string_view to string
-/// Answer: failure
-// void SomeFunc(const std::string& s) {
-//   std::cout << s << std::endl;
-// }
+/// @brief implicit conversion from char array to string
+void SomeFunc(const std::string& s) {
+  std::cout << s << std::endl;
+}
 
-// int main() {
-//   const std::string_view sv{"asldkfj;LSDJKf"};
-//   SomeFunc(sv);
-//   return 0;
-// }
+int main() {
+  char str[] = "saldfja;lsdjf";
+  SomeFunc(str);
+  return 0;
+}
