@@ -137,19 +137,37 @@ int main() {
  * }
  */
 
+/*
+ * int main() {
+ *   Eigen::Vector3d a = Eigen::Vector3d::Random();
+ *   // a.setZero();
+ *   printf("%.2f %.2f %.2f\n", a(0), a(1), a(2));
+ *   a.setRandom();
+ *   printf("%.2f %.2f %.2f\n", a(0), a(1), a(2));
+ *   a.setRandom();
+ *   printf("%.2f %.2f %.2f\n", a(0), a(1), a(2));
+ *
+ *   Eigen::Vector3i b;
+ *   b.setZero();
+ *   printf("%d %d %d\n", b(0), b(1), b(2));
+ *   b.setRandom();
+ *   printf("%d %d %d\n", b(0), b(1), b(2));
+ *   return 0;
+ * }
+ */
 int main() {
-  Eigen::Vector3d a = Eigen::Vector3d::Random();
-  // a.setZero();
-  printf("%.2f %.2f %.2f\n", a(0), a(1), a(2));
-  a.setRandom();
-  printf("%.2f %.2f %.2f\n", a(0), a(1), a(2));
-  a.setRandom();
-  printf("%.2f %.2f %.2f\n", a(0), a(1), a(2));
-
-  Eigen::Vector3i b;
-  b.setZero();
-  printf("%d %d %d\n", b(0), b(1), b(2));
-  b.setRandom();
-  printf("%d %d %d\n", b(0), b(1), b(2));
+  Eigen::Vector3d tran{0.7, 0.8, 3.3};
+  Eigen::Quaterniond rot(0.7, 0.2, 0.1, 0.0);
+  Eigen::Affine3d tf1{Eigen::Affine3d::Identity()};
+  Eigen::Affine3d tf2{Eigen::Affine3d::Identity()};
+  tf1.translate(tran);
+  tf1.rotate(rot);
+  tf2.translate(tran);
+  tf2.rotate(rot);
+  if (tf1.isApprox(tf2)) {
+    std::cout << "similar\n";
+  } else {
+    std::cout << "not simliar\n";
+  }
   return 0;
 }
