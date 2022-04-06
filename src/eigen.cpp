@@ -155,19 +155,28 @@ int main() {
  *   return 0;
  * }
  */
+/*
+ * int main() {
+ *   Eigen::Vector3d tran{0.7, 0.8, 3.3};
+ *   Eigen::Quaterniond rot(0.7, 0.2, 0.1, 0.0);
+ *   Eigen::Affine3d tf1{Eigen::Affine3d::Identity()};
+ *   Eigen::Affine3d tf2{Eigen::Affine3d::Identity()};
+ *   tf1.translate(tran);
+ *   tf1.rotate(rot);
+ *   tf2.translate(tran);
+ *   tf2.rotate(rot);
+ *   if (tf1.isApprox(tf2)) {
+ *     std::cout << "similar\n";
+ *   } else {
+ *     std::cout << "not simliar\n";
+ *   }
+ *   return 0;
+ * }
+ */
 int main() {
-  Eigen::Vector3d tran{0.7, 0.8, 3.3};
-  Eigen::Quaterniond rot(0.7, 0.2, 0.1, 0.0);
-  Eigen::Affine3d tf1{Eigen::Affine3d::Identity()};
-  Eigen::Affine3d tf2{Eigen::Affine3d::Identity()};
-  tf1.translate(tran);
-  tf1.rotate(rot);
-  tf2.translate(tran);
-  tf2.rotate(rot);
-  if (tf1.isApprox(tf2)) {
-    std::cout << "similar\n";
-  } else {
-    std::cout << "not simliar\n";
-  }
+  Eigen::Matrix<double, 5, 1> mt;
+  mt << 0, 1, 2, 3, 4;
+  Eigen::VectorXd vct = mt;
+  std::cout << vct << std::endl;
   return 0;
 }
