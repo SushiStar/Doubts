@@ -17,11 +17,18 @@ class B : public A {
   int val_val{11};
 };
 
+/*
+ * int main() {
+ *   std::unique_ptr<A> ptr{nullptr};
+ *   std::unique_ptr<B> ptrr = std::make_unique<B>();
+ *   ptrr->val = 11;
+ *   ptr = std::move(ptrr);
+ *   std::cout << ptr->val << std::endl;
+ *   return 0;
+ * }
+ */
+
 int main() {
-  std::unique_ptr<A> ptr{nullptr};
-  std::unique_ptr<B> ptrr = std::make_unique<B>();
-  ptrr->val = 11;
-  ptr = std::move(ptrr);
-  std::cout << ptr->val << std::endl;
-  return 0;
+  std::unique_ptr<int> uptr{new int{10}};
+  int* rptr = uptr.get();
 }
