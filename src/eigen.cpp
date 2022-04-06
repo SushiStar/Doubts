@@ -174,9 +174,11 @@ int main() {
  * }
  */
 int main() {
-  Eigen::Matrix<double, 5, 1> mt;
-  mt << 0, 1, 2, 3, 4;
-  Eigen::VectorXd vct = mt;
-  std::cout << vct << std::endl;
+  Eigen::Matrix<double, 8, 1> vec;
+  printf("size: %lu\n", vec.size());
+  for (size_t i = 0; i < vec.size(); ++i) {
+    printf("index:%lu, value:%.3f\n", i, vec(i));
+  }
+
   return 0;
 }
