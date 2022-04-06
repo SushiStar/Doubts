@@ -29,6 +29,16 @@ class B : public A {
  */
 
 int main() {
-  std::unique_ptr<int> uptr{new int{10}};
-  int* rptr = uptr.get();
+  std::shared_ptr<int> ptr1 = std::make_shared<int>(3);
+  std::shared_ptr<int> ptr2(ptr1);
+  if (ptr2 == ptr1) {
+    printf("equal\n");
+  } else {
+    printf("not equal\n");
+  }
+  std::unordered_set<std::shared_ptr<int>> sett{ptr1};
+  if (sett.count(ptr2)) {
+    printf("same hash\n");
+  }
+  return 0;
 }
