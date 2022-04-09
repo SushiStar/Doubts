@@ -83,25 +83,27 @@
 /**
  * @brief test lambda as a function parameter
  */
-class test {
- public:
-  void Add(int a, int b);
-};
-
-void test::Add(int a, int b) {
-  throw std::runtime_error("throwed an error");
-  std::cout << a + b << std::endl;
-}
-
-bool exception_test(std::function<void()> f) {
-  bool exception_flag{false};
-  try {
-    f();
-  } catch (std::runtime_error &e) {
-    exception_flag = true;
-  }
-  return exception_flag;
-}
+/*
+ * class test {
+ *  public:
+ *   void Add(int a, int b);
+ * };
+ *
+ * void test::Add(int a, int b) {
+ *   throw std::runtime_error("throwed an error");
+ *   std::cout << a + b << std::endl;
+ * }
+ *
+ * bool exception_test(std::function<void()> f) {
+ *   bool exception_flag{false};
+ *   try {
+ *     f();
+ *   } catch (std::runtime_error &e) {
+ *     exception_flag = true;
+ *   }
+ *   return exception_flag;
+ * }
+ */
 
 /*
  * int main() {
@@ -154,9 +156,10 @@ bool exception_test(std::function<void()> f) {
  *   return 0;
  * }
  */
-
 int main() {
-  std::vector<int> vct(3);
-  printf("vector size is: %lu\n", vct.size());
+  std::vector<int> vct;
+  bool ret = std::all_of(vct.begin(), vct.end(), [](int a) { return true; });
+  printf(ret ? "true\n" : "false\n");
+
   return 0;
 }

@@ -28,17 +28,29 @@ class B : public A {
  * }
  */
 
+/*
+ * int main() {
+ *   std::shared_ptr<int> ptr1 = std::make_shared<int>(3);
+ *   std::shared_ptr<int> ptr2(ptr1);
+ *   if (ptr2 == ptr1) {
+ *     printf("equal\n");
+ *   } else {
+ *     printf("not equal\n");
+ *   }
+ *   std::unordered_set<std::shared_ptr<int>> sett{ptr1};
+ *   if (sett.count(ptr2)) {
+ *     printf("same hash\n");
+ *   }
+ *   return 0;
+ * }
+ */
 int main() {
-  std::shared_ptr<int> ptr1 = std::make_shared<int>(3);
-  std::shared_ptr<int> ptr2(ptr1);
-  if (ptr2 == ptr1) {
-    printf("equal\n");
+  std::shared_ptr<int> ptr{nullptr};
+  std::weak_ptr<int> wptr(ptr);
+  if (wptr.expired()) {
+    printf("expired\n");
   } else {
-    printf("not equal\n");
-  }
-  std::unordered_set<std::shared_ptr<int>> sett{ptr1};
-  if (sett.count(ptr2)) {
-    printf("same hash\n");
+    printf("not expired\n");
   }
   return 0;
 }
