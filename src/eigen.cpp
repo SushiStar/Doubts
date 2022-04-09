@@ -9,6 +9,7 @@
 // STL include
 #include <array>
 #include <cassert>
+#include <ctime>
 #include <iostream>
 
 // external include
@@ -174,11 +175,19 @@ int main() {
  * }
  */
 int main() {
-  Eigen::Matrix<double, 8, 1> vec;
-  printf("size: %lu\n", vec.size());
-  for (size_t i = 0; i < vec.size(); ++i) {
-    printf("index:%lu, value:%.3f\n", i, vec(i));
+  Eigen::Vector3d pt1{0, 0, 0};
+  Eigen::Vector3d pt2{1, 1, 1};
+  double ret = 0;
+
+  clock_t begin = clock();
+  for (int i = 0; i < 1000000; ++i) {
+    ret = (pt1 - pt2).norm();
   }
+  clock_t end = clock();
+  double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+  std::cout << "time: " << elapsed_secs << " seconds\n";
+
+  printf("%.3f\n", ret);
 
   return 0;
 }
