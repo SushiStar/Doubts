@@ -156,10 +156,40 @@
  *   return 0;
  * }
  */
-int main() {
-  std::vector<int> vct;
-  bool ret = std::all_of(vct.begin(), vct.end(), [](int a) { return true; });
-  printf(ret ? "true\n" : "false\n");
+/*
+ * int main() {
+ *   std::vector<int> vct;
+ *   bool ret = std::all_of(vct.begin(), vct.end(), [](int a) { return true; });
+ *   printf(ret ? "true\n" : "false\n");
+ *
+ *   return 0;
+ * }
+ */
 
+/**
+ * @brief list initialization test
+ *
+ * @return
+ */
+
+class Box {
+ public:
+  Box(double x, double y, double z) : x_(x), y_(y), z_(z) {
+  }
+
+  friend std::ostream& operator<<(std::ostream& os, const Box& box);
+
+ private:
+  double x_, y_, z_;
+};
+
+std::ostream& operator<<(std::ostream& os, const Box& box) {
+  std::cout << box.x_ << " " << box.y_ << " " << box.z_ << std::endl;
+  return os;
+}
+
+int main() {
+  Box box{1, 2, 3};
+  std::cout << box << std::endl;
   return 0;
 }
