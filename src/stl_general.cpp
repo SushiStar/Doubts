@@ -172,24 +172,35 @@
  * @return
  */
 
-class Box {
- public:
-  Box(double x, double y, double z) : x_(x), y_(y), z_(z) {
-  }
-
-  friend std::ostream& operator<<(std::ostream& os, const Box& box);
-
- private:
-  double x_, y_, z_;
-};
-
-std::ostream& operator<<(std::ostream& os, const Box& box) {
-  std::cout << box.x_ << " " << box.y_ << " " << box.z_ << std::endl;
-  return os;
-}
+/*
+ * class Box {
+ *  public:
+ *   Box(double x, double y, double z) : x_(x), y_(y), z_(z) {
+ *   }
+ *
+ *   friend std::ostream& operator<<(std::ostream& os, const Box& box);
+ *
+ *  private:
+ *   double x_, y_, z_;
+ * };
+ *
+ * std::ostream& operator<<(std::ostream& os, const Box& box) {
+ *   std::cout << box.x_ << " " << box.y_ << " " << box.z_ << std::endl;
+ *   return os;
+ * }
+ *
+ * int main() {
+ *   Box box{1, 2, 3};
+ *   std::cout << box << std::endl;
+ *   return 0;
+ * }
+ */
 
 int main() {
-  Box box{1, 2, 3};
-  std::cout << box << std::endl;
+  std::vector<int> vec{0, 1, 2, 3, 4, 5};
+  auto it = std::remove(vec.begin(), vec.end(), 3);
+  vec.erase(it);
+  std::for_each(vec.begin(), vec.end(), [](int a) { std::cout << a << '\n'; });
+
   return 0;
 }
