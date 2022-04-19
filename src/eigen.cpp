@@ -174,20 +174,33 @@ int main() {
  *   return 0;
  * }
  */
+
+/*
+ * int main() {
+ *   Eigen::Vector3d pt1{0, 0, 0};
+ *   Eigen::Vector3d pt2{1, 1, 1};
+ *   double ret = 0;
+ *
+ *   clock_t begin = clock();
+ *   for (int i = 0; i < 1000000; ++i) {
+ *     ret = (pt1 - pt2).norm();
+ *   }
+ *   clock_t end = clock();
+ *   double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+ *   std::cout << "time: " << elapsed_secs << " seconds\n";
+ *
+ *   printf("%.3f\n", ret);
+ *
+ *   return 0;
+ * }
+ */
+
 int main() {
-  Eigen::Vector3d pt1{0, 0, 0};
-  Eigen::Vector3d pt2{1, 1, 1};
-  double ret = 0;
-
-  clock_t begin = clock();
-  for (int i = 0; i < 1000000; ++i) {
-    ret = (pt1 - pt2).norm();
+  Eigen::MatrixXd mtx(3, 3);
+  Eigen::Vector3d vct{0, 1, 2};
+  for (int i = 0; i < mtx.rows(); ++i) {
+    mtx.row(i) = vct;
   }
-  clock_t end = clock();
-  double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
-  std::cout << "time: " << elapsed_secs << " seconds\n";
-
-  printf("%.3f\n", ret);
-
+  std::cout << mtx << std::endl;
   return 0;
 }
