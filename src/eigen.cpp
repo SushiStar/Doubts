@@ -195,12 +195,25 @@ int main() {
  * }
  */
 
+/*
+ * int main() {
+ *   Eigen::MatrixXd mtx(3, 3);
+ *   Eigen::Vector3d vct{0, 1, 2};
+ *   for (int i = 0; i < mtx.rows(); ++i) {
+ *     mtx.row(i) = vct;
+ *   }
+ *   std::cout << mtx << std::endl;
+ *   return 0;
+ * }
+ */
+
 int main() {
-  Eigen::MatrixXd mtx(3, 3);
-  Eigen::Vector3d vct{0, 1, 2};
-  for (int i = 0; i < mtx.rows(); ++i) {
-    mtx.row(i) = vct;
-  }
-  std::cout << mtx << std::endl;
+  double *a = new double[4];
+  a[0] = 0;
+  a[1] = 1;
+  a[2] = 2;
+  a[3] = 3;
+  Eigen::VectorXd vct = Eigen::Map<Eigen::VectorXd>(a, 4);
+  std::cout << vct << std::endl;
   return 0;
 }
