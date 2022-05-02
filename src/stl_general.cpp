@@ -197,35 +197,47 @@
  * }
  */
 
+/*
+ * int main() {
+ *   std::vector<std::string> vec{"a,", "bs",   "csd",  "dd",     "ee",
+ *                                "df", "sadf", "asdf", "asdfll", "sdf;low"};
+ *
+ *   std::unordered_set<std::string> sett{
+ *       "a,", "bs", "csd", "dd", "ee", "df", "sadf", "asdf", "asdfll",
+ * "sdf;low"};
+ *
+ *   clock_t begin = clock();
+ *   for (int i = 0; i < 100000; ++i) {
+ *     vec.emplace_back("regional");
+ *     vec.emplace_back("non_regional");
+ *     auto it = std::remove(vec.begin(), vec.end(), "regional");
+ *     vec.erase(it);
+ *     vec.pop_back();
+ *   }
+ *   clock_t end = clock();
+ *   double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+ *   std::cout << "vec took time: " << elapsed_secs << " seconds\n";
+ *
+ *   begin = clock();
+ *   for (int i = 0; i < 100000; ++i) {
+ *     sett.insert("regional");
+ *     sett.insert("non_regional");
+ *     sett.erase("regional");
+ *     sett.erase("non_regional");
+ *   }
+ *   end = clock();
+ *   elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+ *   std::cout << "set took time: " << elapsed_secs << " seconds\n";
+ *
+ *   return 0;
+ * }
+ */
+
 int main() {
-  std::vector<std::string> vec{"a,", "bs",   "csd",  "dd",     "ee",
-                               "df", "sadf", "asdf", "asdfll", "sdf;low"};
+  std::function<int(int, int)> sum;
+  // sum = [](int a, int b) { return a + b; };
 
-  std::unordered_set<std::string> sett{
-      "a,", "bs", "csd", "dd", "ee", "df", "sadf", "asdf", "asdfll", "sdf;low"};
-
-  clock_t begin = clock();
-  for (int i = 0; i < 100000; ++i) {
-    vec.emplace_back("regional");
-    vec.emplace_back("non_regional");
-    auto it = std::remove(vec.begin(), vec.end(), "regional");
-    vec.erase(it);
-    vec.pop_back();
-  }
-  clock_t end = clock();
-  double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
-  std::cout << "vec took time: " << elapsed_secs << " seconds\n";
-
-  begin = clock();
-  for (int i = 0; i < 100000; ++i) {
-    sett.insert("regional");
-    sett.insert("non_regional");
-    sett.erase("regional");
-    sett.erase("non_regional");
-  }
-  end = clock();
-  elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
-  std::cout << "set took time: " << elapsed_secs << " seconds\n";
+  std::cout << sum(1, 2) << std::endl;
 
   return 0;
 }
