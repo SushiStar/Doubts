@@ -242,5 +242,4 @@ int main() {
         printf("%d\n", *another);
     }
     return 0;
-
 }
