@@ -3,7 +3,9 @@
 #include <exception>
 #include <functional>
 #include <iostream>
+#include <map>
 #include <memory>
+#include <set>
 #include <string>
 #include <unordered_map>
 #include <unordered_set>
@@ -232,14 +234,26 @@
  * }
  */
 
-int main() { 
-    std::vector<int> vec{1, 2, 3, 4, 5};
-    auto it = vec.begin();
-    auto another = std::prev(it);
-    if (another == vec.end()) {
-        printf("true\n");
-    } else {
-        printf("%d\n", *another);
-    }
-    return 0;
+// int main() {
+//     std::vector<int> vec{1, 2, 3, 4, 5};
+//     auto it = vec.begin();
+//     auto another = std::prev(it);
+//     if (another == vec.end()) {
+//         printf("true\n");
+//     } else {
+//         printf("%d\n", *another);
+//     }
+//     return 0;
+// }
+
+int main() {
+  std::multiset<int> sett;
+  sett.insert(0);
+  sett.insert(1);
+  sett.insert(0);
+  sett.erase(sett.find(0));
+  sett.erase(sett.find(0));
+  for (auto v : sett) {
+    std::cout << v << std::endl;
+  }
 }
