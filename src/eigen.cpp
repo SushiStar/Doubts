@@ -207,13 +207,33 @@ int main() {
  * }
  */
 
+/*
+ * int main() {
+ *   double *a = new double[4];
+ *   a[0] = 0;
+ *   a[1] = 1;
+ *   a[2] = 2;
+ *   a[3] = 3;
+ *   Eigen::VectorXd vct = Eigen::Map<Eigen::VectorXd>(a, 4);
+ *   std::cout << vct << std::endl;
+ *   return 0;
+ * }
+ */
+
+/*
+ * int main() {
+ *   Eigen::Vector4d v{0.657, -0.002, -0.715, 0.238};
+ *   Eigen::Vector4d v2{-0.002, -0.715, 0.238, 0.657};
+ *   Eigen::Quaterniond quat1(v(0), v(1), v(2), v(3));
+ *   Eigen::Quaterniond quat2(v2.data());
+ *   std::cout << quat1.coeffs() << std::endl;
+ *   std::cout << std::endl << quat2.coeffs() << std::endl;
+ *   return 0;
+ * }
+ */
+
 int main() {
-  double *a = new double[4];
-  a[0] = 0;
-  a[1] = 1;
-  a[2] = 2;
-  a[3] = 3;
-  Eigen::VectorXd vct = Eigen::Map<Eigen::VectorXd>(a, 4);
-  std::cout << vct << std::endl;
+  Eigen::Vector3i v{1, 2, 1};
+  std::cout << v.cast<double>().norm() << std::endl;
   return 0;
 }
