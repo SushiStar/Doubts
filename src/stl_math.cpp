@@ -37,8 +37,17 @@
  */
 
 // cast double to int
+/*
+ * int main() {
+ *   double val = 0.9999999;
+ *   int valI = static_cast<int>(std::round(val));
+ *   printf("%.15f, %d\n", round(val), valI);
+ * }
+ */
+
 int main() {
-  double val = 0.9999999;
-  int valI = static_cast<int>(std::round(val));
-  printf("%.15f, %d\n", round(val), valI);
+    int i = 4; 
+    i >>= 10;
+    std::cout << i << std::endl;
+    return 0;
 }
