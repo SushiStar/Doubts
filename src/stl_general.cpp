@@ -246,14 +246,61 @@
 //     return 0;
 // }
 
-int main() {
-  std::multiset<int> sett;
-  sett.insert(0);
-  sett.insert(1);
-  sett.insert(0);
-  sett.erase(sett.find(0));
-  sett.erase(sett.find(0));
-  for (auto v : sett) {
-    std::cout << v << std::endl;
+// int main() {
+//   std::multiset<int> sett;
+//   sett.insert(0);
+//   sett.insert(1);
+//   sett.insert(0);
+//   sett.erase(sett.find(0));
+//   sett.erase(sett.find(0));
+//   for (auto v : sett) {
+//     std::cout << v << std::endl;
+//   }
+// }
+
+class Foo {
+ public:
+  virtual void SayHi() = 0;
+  virtual ~Foo(){};
+};
+
+class Point {
+ public:
+  int x{0};
+  int y{0};
+};
+
+template <class T>
+class Bar : public Foo {
+ public:
+  virtual ~Bar(){};
+  Point pt;
+  virtual void SayHi() {
+    printf("hi\n");
   }
+};
+
+int main() {
+  std::unique_ptr<Foo> talker = std::make_unique<Bar<Point>>();
+  talker->SayHi();
+  return 0;
 }
+
+// class Foo {
+//  public:
+//   virtual void SayHi() = 0;
+//   virtual ~Foo(){};
+// };
+
+// class Bar : public Foo {
+//  public:
+//   ~Bar(){};
+//   virtual void SayHi() {
+//     printf("hi\n");
+//   }
+// };
+
+// int main() {
+//   std::unique_ptr<Foo> talker = std::make_unique<Bar>();
+//   return 0;
+// }
