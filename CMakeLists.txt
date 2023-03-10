@@ -49,6 +49,7 @@ add_executable(stl_filesystem src/stl_filesystem.cpp)
 add_executable(stl_math src/stl_math.cpp)
 add_executable(stl_time src/stl_time.cpp)
 add_executable(bit_operation src/bitoperation.cpp)
+add_executable(stl_container src/stl_container.cpp)
 add_executable(stl_general src/stl_general.cpp)
 add_executable(stl_ptr src/stl_ptr.cpp)
 
